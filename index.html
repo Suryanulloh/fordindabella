@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Cintaku!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS untuk font dan sedikit penyesuaian */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fce4ec; /* Soft pink background */
+            color: #4a4a4a;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for navigation */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #880e4f; /* Deep romantic pink */
+        }
+
+        .hero-section {
+            background: linear-gradient(to bottom right, #f8bbd0, #e91e63); /* Gradient background */
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .section-gradient {
+            background: linear-gradient(to bottom, #ffebee, #fce4ec); /* Lighter gradient for sections */
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background-color: #e91e63;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #e91e63;
+            z-index: 10;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0.95rem;
+            top: 1.5rem;
+            bottom: -2.5rem; /* Adjust to connect lines */
+            width: 2px;
+            background-color: #e91e63;
+            z-index: 1;
+        }
+
+        .timeline-item:last-child::after {
+            display: none; /* Hide line for the last item */
+        }
+
+        /* Responsive audio controls */
+        audio {
+            width: 100%;
+            max-width: 300px; /* Limit width on larger screens */
+            margin-top: 1rem;
+            border-radius: 9999px; /* Fully rounded */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Custom scrollbar for aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8bbd0;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e91e63;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #880e4f;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Header/Hero Section -->
+    <header class="hero-section min-h-screen flex flex-col items-center justify-center text-center p-8 rounded-b-3xl shadow-xl">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-pulse">Selamat Ulang Tahun, Orang Favoritku!</h1>
+        <p class="text-xl md:text-2xl mb-8">Untuk Dinda Bella Agustina Yang Ke-21 Tahun</p>
+        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-lg mb-8 transform hover:scale-105 transition-transform duration-300">
+            <!-- Placeholder image: Ganti dengan foto Anda berdua -->
+            <img src="gambar/1.jpg" alt="Foto Kami Berdua" class="w-full h-full object-cover">
+        </div>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-6">
+            Setiap hari bersamamu adalah hadiah terindah. Hari ini, biarkan aku merayakan dirimu.
+        </p>
+        <!-- Audio control -->
+        <audio id="background-music" controls loop>
+            <!-- Ganti 'lagu-favorit.mp3' dengan URL lagu favorit Anda berdua -->
+            <source src="video/sal.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+        </audio>
+        <button id="play-pause-btn" class="mt-4 px-6 py-3 bg-white text-pink-700 rounded-full shadow-lg hover:bg-pink-100 transition-colors duration-300">
+            Putar Musik
+        </button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white sticky top-0 z-50 shadow-md py-4 rounded-b-xl">
+        <ul class="flex flex-wrap justify-center gap-4 md:gap-8 text-lg font-semibold">
+            <li><a href="#kenangan" class="text-pink-600 hover:text-pink-800 transition-colors duration-200 p-2 rounded-md hover:bg-pink-50">Kenangan Kita</a></li>
+            <li><a href="#galeri" class="text-pink-600 hover:text-pink-800 transition-colors duration-200 p-2 rounded-md hover:bg-pink-50">Galeri Cinta</a></li>
+            <li><a href="#surat" class="text-pink-600 hover:text-pink-800 transition-colors duration-200 p-2 rounded-md hover:bg-pink-50">Surat Hatiku</a></li>
+            <li><a href="#alasan" class="text-pink-600 hover:text-pink-800 transition-colors duration-200 p-2 rounded-md hover:bg-pink-50">Mengapa Aku Mencintaimu</a></li>
+            <li><a href="#kejutan" class="text-pink-600 hover:text-pink-800 transition-colors duration-200 p-2 rounded-md hover:bg-pink-50">Kejutan Spesial</a></li>
+        </ul>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <!<!-- Section: Kenangan Kita (Timeline) --> 
+<section id="kenangan" class="section-gradient p-8 md:p-12 rounded-3xl shadow-lg mb-12">
+    <h2 class="text-4xl md:text-5xl text-center mb-10 font-bold text-pink-700">Kenangan Kita</h2>
+    <div class="relative max-w-3xl mx-auto">
+        <div class="timeline-item mb-12">
+            <h3 class="text-2xl font-semibold text-pink-600">11 Agustus 2022 - Tahun Pertama Merayakan Ulang Tahun Dengan Aku</h3>
+            <p class="text-gray-700 mt-2">Siang itu di Burger King Boxies, pertama kali aku merayakan wanita lain dihidupku dan kini kamu menjadi bagian favorit hidupku.</p>
+            <img src="Gambar/Ultah 1.jpg" alt="Momen Pertama Kali Bertemu" class="mt-4 rounded-xl shadow-md w-2/3 md:w-1/2 mx-auto">
+        </div>
+        <div class="timeline-item mb-12">
+            <h3 class="text-2xl font-semibold text-pink-600">11 Agustus 2023 - Tahun Kedua Merayakan Ulang Tahun Dengan Aku</h3>
+            <p class="text-gray-700 mt-2">Piknik di Kebun Raya Bogor, merupakan piknik pertama kali dihidupku dan bersama sicantik yang beulang tahun menjadikan memori indah yang tidak terlupakan, setiap langkah bersamamu adalah petualangan.</p>
+            <img src="Gambar/ultah kedua.jpg" alt="Kencan Pertama" class="mt-4 rounded-xl shadow-md w-2/3 md:w-1/2 mx-auto">
+        </div>
+        <div class="timeline-item mb-12">
+            <h3 class="text-2xl font-semibold text-pink-600">11 Agustus 2024 - Tahun Ketiga Merayakan Ulang Tahun Dengan Aku</h3>
+            <p class="text-gray-700 mt-2">Date di Bizzicoffe, pertemuan ke-3 kali berulang tahun kamu bersama aku, aku selalu menantikan ulang tahun kamu seterusnya dengan cerita selanjutnya hingga kita tua.</p>
+            <img src="Gambar/ultah ketiga.jpg" alt="Petualangan Bersama" class="mt-4 rounded-xl shadow-md w-2/3 md:w-1/2 mx-auto">
+        </div>
+    </div>
+</section>
+
+
+        <!-- Section: Galeri Cinta -->
+        <section id="galeri" class="section-gradient p-8 md:p-12 rounded-3xl shadow-lg mb-12">
+            <h2 class="text-4xl md:text-5xl text-center mb-10 font-bold text-pink-700">Galeri Cinta Kita</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Placeholder images: Ganti dengan foto-foto Anda berdua -->
+                <div class="relative group rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="Gambar/foto 111.jpg" alt="Momen Manis 1" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Ketengilan</p>
+                    </div>
+                </div>
+                <div class="relative group rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="Gambar/explore.jpg" alt="Momen Manis 2" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Explore</p>
+                    </div>
+                </div>
+                <div class="relative group rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="Gambar/foto 3.jpg" alt="Momen Manis 3" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Kehangatan</p>
+                    </div>
+                </div>
+                <div class="relative group rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="Gambar/foto 4.jpg" alt="Momen Manis 4" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Senyuman</p>
+                    </div>
+                </div>
+                <div class="relative group rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="Gambar/foto 5.jpg" alt="Momen Manis 5" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Kerandoman</p>
+                    </div>
+                </div>
+                <div class="relative group rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="Gambar/foto 6.jpg" alt="Momen Manis 6" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-lg font-semibold">Selamanya</p>
+                    </div>
+                </div>
+                <!-- Anda juga bisa menambahkan video di sini -->
+                </div>
+            </div>
+            <div class="col-span-full text-center mt-8 fade-in">
+                <video class="w-64 mx-auto rounded-xl shadow-lg object-cover" autoplay loop controls playsinline>
+                    <source src="Gambar/vidio.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <section id="surat" class="section-gradient p-8 md:p-12 rounded-3xl shadow-lg mb-12 text-center fade-in">
+            <h2 class="text-4xl md:text-5xl mb-8 font-bold text-pink-700 animate__animated animate__fadeInUp">Surat Dari Hatiku Untukmu</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-inner max-w-3xl mx-auto animate__animated animate__bounceIn">
+                <p class="text-lg md:text-xl leading-relaxed text-gray-800 italic font-playfair">
+                    <span id="typing-text"></span>
+                </p>
+                <div class="text-right mt-4 text-pink-700 font-semibold" id="signature">
+                    <br>Dengan seluruh cintaku,
+                    <br>Ilham Suryanulloh
+                </div>
+            </div>
+        </section>
+
+        <section id="alasan" class="section-gradient p-8 md:p-12 rounded-3xl shadow-lg mb-12 fade-in">
+            <h2 class="text-4xl md:text-5xl text-center mb-10 font-bold text-pink-700 animate__animated animate__fadeInUp">Mengapa Aku Mencintaimu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="reason-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-xl font-semibold text-pink-600 mb-2">Senyummu yang Menular</h3>
+                    <p class="text-gray-700">Senyummu adalah sinar matahari di hari-hari mendungku. Itu selalu bisa membuatku merasa lebih baik.</p>
+                </div>
+                <div class="reason-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-xl font-semibold text-pink-600 mb-2">Kebaikan Hatimu</h3>
+                    <p class="text-gray-700">Kebaikanmu selalu tulus, membuat semua orang merasa dihargai dan aku merasa beruntung menjadi salah satunya.</p>
+                </div>
+                <div class="reason-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-xl font-semibold text-pink-600 mb-2">Kecerdasanmu</h3>
+                    <p class="text-gray-700">Cara kamu memahami, berpikir, dan menemukan jalan di setiap situasi selalu membuatku terpesona.</p>
+                </div>
+                <div class="reason-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-xl font-semibold text-pink-600 mb-2">Tawamu yang Menghidupkan Dunia</h3>
+                    <p class="text-gray-700">Mendengar tawamu adalah salah satu suara favoritku di dunia ini. Itu mengisi hatiku dengan kebahagiaan.</p>
+                </div>
+                <div class="reason-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-xl font-semibold text-pink-600 mb-2">Caramu Membuatku Merasa Aman</h3>
+                    <p class="text-gray-700">Aku selalu merasa aman dan nyaman saat bersamamu, seolah semua masalah hilang.</p>
+                </div>
+                <div class="reason-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-2">
+                    <h3 class="text-xl font-semibold text-pink-600 mb-2">Pertualangan Kita</h3>
+                    <p class="text-gray-700">Setiap momen bersamamu adalah pertualangan, bahkan hal-hal kecil sekalipun.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kejutan" class="section-gradient p-8 md:p-12 rounded-3xl shadow-lg text-center fade-in">
+            <h2 class="text-4xl md:text-5xl mb-8 font-bold text-pink-700 animate__animated animate__fadeInUp">Sebuah Kejutan Spesial Untukmu!</h2>
+            <p class="text-lg md:text-xl mb-6 text-gray-800">
+                Ada satu hal lagi yang ingin kubagikan denganmu. Klik tombol di bawah ini untuk mengungkapkannya!
+            </p>
+            <button id="surprise-button" class="px-8 py-4 bg-pink-700 text-white text-xl font-bold rounded-full shadow-lg hover:bg-pink-800 transform hover:scale-105 transition-all duration-300 ease-in-out animate-pulse">
+                Buka Kejutan!
+            </button>
+            <div id="surprise-content" class="hidden mt-8 bg-white p-8 rounded-2xl shadow-inner max-w-xl mx-auto">
+                <h3 class="text-3xl font-bold text-pink-600 mb-4">Kejutan!</h3>
+                <p class="text-lg text-gray-800 mb-4">
+                    <span class="block mb-2">- lihat Snapgram aku</span>
+                    <span class="block mb-2">- Ada 4 Kado yang harus dibuka!</span>
+                    <span class="block">- Kamu boleh menentukan tempat makan untuk birthday kamu dan kemana kita pergi, aku akan menjaga mood kamu dan menjadikan kamu Ratu, Kanjeng dan Mahaputri.</span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-pink-900 text-white text-center p-6 mt-12 rounded-t-3xl shadow-xl">
+        <p class="text-lg">&copy; <span id="current-year"></span> Dengan Seluruh Cinta, Oleh Ilham Suryanulloh </p>
+        <p class="text-sm mt-2">Terima kasih telah menjadi bagian terindah dalam hidupku
+            <br> Walaupun ultah aku nggak dirayain oleh kamu gapapa deh yang penting aku merayakan kamu hehe melihat bahagimu adalah bahagiaku.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set tahun saat ini di footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Smooth scrolling untuk navigasi
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Offset untuk sticky nav
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Kontrol musik latar
+            const backgroundMusic = document.getElementById('background-music');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+
+            let isPlaying = false;
+            let firstInteraction = false;
+
+            const toggleMusic = () => {
+                if (isPlaying) {
+                    backgroundMusic.pause();
+                    playPauseBtn.textContent = 'Putar Musik';
+                    playPauseBtn.classList.remove('animate__pulse', 'animate__infinite');
+                } else {
+                    backgroundMusic.play().then(() => {
+                        console.log('Musik diputar.');
+                    }).catch(error => {
+                        console.log('Gagal memutar musik:', error);
+                    });
+                    playPauseBtn.textContent = 'Jeda Musik';
+                    playPauseBtn.classList.add('animate__pulse', 'animate__infinite');
+                }
+                isPlaying = !isPlaying;
+            };
+
+            playPauseBtn.addEventListener('click', () => {
+                firstInteraction = true;
+                toggleMusic();
+            });
+
+            // Pemicu otomatis musik setelah interaksi pertama
+            document.body.addEventListener('click', () => {
+                if (!firstInteraction) {
+                    toggleMusic();
+                }
+            }, { once: true });
+
+
+            // Kejutan tombol
+            const surpriseButton = document.getElementById('surprise-button');
+            const surpriseContent = document.getElementById('surprise-content');
+
+            surpriseButton.addEventListener('click', () => {
+                surpriseContent.classList.toggle('hidden');
+                if (!surpriseContent.classList.contains('hidden')) {
+                    surpriseButton.textContent = 'Sembunyikan Kejutan';
+                    surpriseButton.classList.remove('animate-pulse');
+                    surpriseButton.classList.add('animate__animated', 'animate__bounceOut');
+                    surpriseContent.classList.add('animate__animated', 'animate__fadeIn');
+                    // Tembakkan confetti saat kejutan dibuka
+                    confetti({
+                        particleCount: 100,
+                        spread: 120,
+                        origin: { y: 0.6 }
+                    });
+                } else {
+                    surpriseButton.textContent = 'Buka Kejutan!';
+                    surpriseButton.classList.add('animate-pulse');
+                    surpriseButton.classList.remove('animate__animated', 'animate__bounceOut');
+                    surpriseContent.classList.remove('animate__animated', 'animate__fadeIn');
+                }
+            });
+
+            // Animasi surat dengan efek ketik
+            const typingTextElement = document.getElementById('typing-text');
+            const originalText = `Untuk Dinda Bella Agustina,
+                                  <br><br>
+                                  Di hari spesialmu ini, aku ingin mengungkapkan betapa berartinya dirimu bagiku. Setiap tawa, setiap obrolan, setiap momen senang maupun sedih yang kita bagi adalah harta yang tak ternilai. Kamu membawa cahaya ke dalam hidupku, membuat setiap hari terasa seperti pertualangan baru.
+                                  <br><br>
+                                  Aku bersyukur atas kehadiranmu, atas caramu mendukungku, dan atas cinta tulus yang selalu kau berikan. Kamu adalah inspirasi, sahabat terbaik, dan belahan jiwaku. Aku tak sabar untuk menciptakan lebih banyak kenangan indah bersamamu di tahun-tahun mendatang.
+                                  <br><br>
+                                  Selamat ulang tahun, cintaku. Semoga hari ini dan setiap hari dalam hidupmu dipenuhi dengan kebahagiaan, tawa, dan semua yang terbaik yang pantas kamu dapatkan atas semua takdir yang direncanakan atau yang tidak direncanakan. Aku mencintaimu lebih dari kata-kata yang bisa ungkapkan.`;
+            
+            let charIndex = 0;
+            const typingSpeed = 20; // Kecepatan ketik (milidetik)
+
+            function typeWriter() {
+                if (charIndex < originalText.length) {
+                    const char = originalText.charAt(charIndex);
+                    if (char === '<') {
+                        // Handle HTML tags like <br>
+                        let tagEnd = originalText.indexOf('>', charIndex);
+                        typingTextElement.innerHTML += originalText.substring(charIndex, tagEnd + 1);
+                        charIndex = tagEnd + 1;
+                    } else {
+                        typingTextElement.innerHTML += char;
+                        charIndex++;
+                    }
+                    setTimeout(typeWriter, typingSpeed);
+                } else {
+                    document.getElementById('signature').style.opacity = 1;
+                }
+            }
+
+            // Panggil fungsi saat surat terlihat
+            const letterSection = document.getElementById('surat');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !typingTextElement.hasAttribute('data-typed')) {
+                        typeWriter();
+                        typingTextElement.setAttribute('data-typed', 'true');
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            observer.observe(letterSection);
+            
+            // Intersection Observer untuk animasi section saat di-scroll
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            const options = {
+                root: null,
+                threshold: 0.3,
+            };
+
+            const observerSections = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            fadeInElements.forEach(element => {
+                observerSections.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
